@@ -74,7 +74,16 @@ interface CountryInterface {
    * @param \Galoa\ExerciciosPhp2022\War\GamePlay\Country\CountryInterface $conqueredCountry
    *   The country that has just been conquered.
    */
+
   public function conquer(CountryInterface $conqueredCountry): void;
+
+    /**
+     * Call when, after battle, add additional troops for each round for countries that have conquered a country.
+     * @param int $troopsToBeAdded
+     * Number of additional troops.
+     */
+
+  public function addTroopsPerRound(int $troopsToBeAdded): void;
 
   /**
    * Decreases the number of troops in this country by a given number.

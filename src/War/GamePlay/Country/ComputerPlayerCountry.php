@@ -19,7 +19,20 @@ class ComputerPlayerCountry extends BaseCountry {
    *   The country that will be attacked, NULL if none will be.
    */
   public function chooseToAttack(): ?CountryInterface {
-    // @TODO
+      //Roll dice with 50% chance to attack or not.
+      if($this->getNumberOfTroops() > 1 && rand(0,1) != 0){
+          $neighborToAttack = $this->neighbors[array_rand($this->neighbors)];
+
+          while($neighborToAttack->isConquered()){
+              $neighborToAttack = $neighborToAttack->getConqueror();
+          }
+
+          if($neighborToAttack != $this){
+              return $neighborToAttack;
+          }
+      }
+      return null;
+
   }
 
 }

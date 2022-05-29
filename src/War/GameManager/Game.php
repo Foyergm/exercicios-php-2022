@@ -88,7 +88,7 @@ class Game {
   /**
    * Plays one round.
    */
-  protected function playRound(): void {
+  public function playRound(): void {
     foreach ($this->getUnconqueredCountries() as $attackingCountry) {
       print "----- Vez de " . $attackingCountry->getName() . "\n";
 
@@ -132,6 +132,10 @@ class Game {
       }
       sleep(1);
     }
+    //Get the unconquered countries and give them 3 troops.
+      foreach ($this->getUnconqueredCountries() as $CountriesInTheGame) {
+          $CountriesInTheGame->addTroopsPerRound(3);
+      }
   }
 
   /**
